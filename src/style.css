@@ -1,0 +1,49 @@
+body {
+    margin: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.weatherData {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    width: 40rem;
+    height: 30rem;
+
+}
+
+.weatherCont1 {
+    position: relative;
+    bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.weatherCont2 {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.buttonSearch {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1rem;
+}
+
+.changeToF {
+ margin-left: 6rem;
+}
+
+.changeToC {
+    margin-left: 6rem;
+}

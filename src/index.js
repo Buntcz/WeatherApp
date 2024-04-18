@@ -16,13 +16,17 @@ const wind = document.querySelector(".wind");
 const form = document.querySelector("form")
 const body = document.querySelector("body")
 
+const dayImage = day;
+const nightImage = night;
+
+
 form.addEventListener("submit", checkWeather);
 changeF.addEventListener("click", changeToF);
 changeC.addEventListener("click", changeToC);
 
 
-
 async function checkWeather() {
+
     let searchValue = searchBar.value;
     if(!searchValue) {
         searchValue = "london"
@@ -30,7 +34,7 @@ async function checkWeather() {
 
     event.preventDefault();
 
-    const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=`+searchValue);
+    const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=`+searchValue).catch(handleError);
     const weather = await response.json()
     
     cityName.textContent = weather.location.name;
@@ -38,25 +42,26 @@ async function checkWeather() {
     feelsLike.textContent = `feels like: ${weather.current.feelslike_c} ºC`
     weatherName.textContent = weather.current.condition.text;
     img.src = `https:${weather.current.condition.icon}`
-    wind.textContent = `${weather.current.wind_kph} km/h`;
-    humidity.textContent = `${weather.current.humidity}%`
+    wind.textContent = `༄ ${weather.current.wind_kph} km/h`;
+    humidity.textContent = ` 💧 ${weather.current.humidity}%`
     console.log(weather);
 
 
     if(weather.current.is_day === 0) {
-        body.style.backgroundImage = night;
+        body.style.backgroundImage = nightImage;
     } else if(weather.current.is_day === 1) {
-        body.style.backgroundImage = day;
+        body.style.backgroundImage = dayImage;
     }
-}
+ }
+
+
  
 async function changeToF() {
     let searchValue = searchBar.value;
     if(!searchValue) {
         searchValue = "london"
     }
-
-    const response = await fetch("https://api.weatherapi.com/v1/current.json?key=f45c84f6ed644db6b2d160937241604&q="+searchValue);
+    const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=`+searchValue);
     const weather = await response.json()
 
     cityTemp.textContent = weather.current.temp_f + "ºF"
@@ -72,7 +77,7 @@ async function changeToC() {
         searchValue = "london"
     }
 
-    const response = await fetch("https://api.weatherapi.com/v1/current.json?key=f45c84f6ed644db6b2d160937241604&q="+searchValue);
+    const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=`+searchValue);
     const weather = await response.json()
 
     cityTemp.textContent = weather.current.temp_c + "ºC"
@@ -82,6 +87,14 @@ async function changeToC() {
     changeF.style.display = "flex";
 }
 
+ 
+
+function handleError() {
+    alert("please enter a valid location.")
+}
+
 window.onload = () => {
     checkWeather();
 }
+
+

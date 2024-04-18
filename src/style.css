@@ -6,6 +6,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-image: url('./images/day.jpg');
 }
 
 .weatherData {
@@ -13,11 +14,14 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 1px solid black;
+    border: 5px solid #0CAFFF;
+    border-radius: 10%;
     width: 40rem;
     height: 30rem;
+    background-color: #B2FFFF;
 
 }
+
 
 .weatherCont1 {
     position: relative;
@@ -36,8 +40,14 @@ body {
 
 .buttonSearch {
     display: flex;
+    height: 2rem;
     flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
     margin-bottom: 1rem;
+    background-color: #B2FFFF;
+    border: 2px solid #0CAFFF;
+    border-radius: 20%;
 }
 
 .changeToF {
@@ -46,4 +56,20 @@ body {
 
 .changeToC {
     margin-left: 6rem;
+}
+
+.changeToF, .changeToC {
+    border-radius: 15%;
+    border: 0px solid ;
+    background-color: #00308F;
+    color: white;
+    font-weight: bolder;
+}
+
+.submit {
+    border-radius: 15%;
+    border: 0px solid ;
+    background-color: #00308F;
+    color: white;
+    font-weight: bolder;
 }

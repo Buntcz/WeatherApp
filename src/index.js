@@ -26,6 +26,7 @@ changeC.addEventListener("click", changeToC);
 
 
 async function checkWeather() {
+    try {
 
     let searchValue = searchBar.value;
     if(!searchValue) {
@@ -33,8 +34,8 @@ async function checkWeather() {
     }     
 
     event.preventDefault();
-
-    const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=`+searchValue).catch(handleError);
+    
+    const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=`+searchValue);
     const weather = await response.json()
     
     cityName.textContent = weather.location.name;
@@ -52,7 +53,11 @@ async function checkWeather() {
     } else if(weather.current.is_day === 1) {
         body.style.backgroundImage = dayImage;
     }
+ } catch(error) {
+   handleError();
  }
+
+}
 
 
  

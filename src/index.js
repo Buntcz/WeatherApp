@@ -61,6 +61,7 @@ async function changeToF() {
     if(!searchValue) {
         searchValue = "london"
     }
+
     const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=`+searchValue);
     const weather = await response.json()
 
@@ -96,5 +97,4 @@ function handleError() {
 window.onload = () => {
     checkWeather();
 }
-
 
